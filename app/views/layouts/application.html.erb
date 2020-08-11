@@ -32,6 +32,7 @@
       <p class="dropdown-item"> <%= link_to "S'inscrire", new_user_registration_path %></p>
       <p class="dropdown-item"> <%= link_to "Se connecter", new_user_session_path %></p>
     <% else %>
+    <p class="dropdown-item"> <%= link_to "Voir profil", user_path%></p>
       <p class="dropdown-item"> <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></p>
     <% end %>
   </div>
