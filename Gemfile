@@ -63,3 +63,5 @@ end
 gem 'faker'
 gem 'table_print'
 gem 'dotenv-rails'
+gem 'devise'
+# gem 'devise-bootstrap-views', '~> 1.0'
