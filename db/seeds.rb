@@ -10,9 +10,6 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
-    user1 = User.create(email: 'themicheldu34@yopmail.com', description: '54 ans :', first_name: 'michel', last_name: 'dupont')
-    # user2 = User.create(email: 'theJeandu34@yopmail.com', description: '55 ans :', first_name: 'jean', last_name: 'dupont')
-    puts "users created"
-    event = Event.create(start_date: DateTime.now, title: "afterwork", description: "boire", price: 30)
-
-    Attendance.create(user: user1, event: event)
+user = User.create(email: 'themicheldu34@yopmail.com', description: 'Je suis à la retraire', first_name: 'Michel', last_name: 'Dupont')
+event = Event.create(start_date: DateTime.now, title: "Concours de belote", description: "S'amuser", price: 5)
+Attendance.create(user: user, event: event)

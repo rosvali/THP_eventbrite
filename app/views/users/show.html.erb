@@ -1,0 +1,9 @@
+<div class="jumbotron text-center">
+<h3><%= @user.first_name%> <%= @user.last_name%></h3>
+<p>Description : <%= @user.description %></p>
+<p>Email : <%= @user.email %></p>
+<% if !@user.events.empty? %>
+    <p>Event créé :<a href="<%= event_path(@event.id) %>" > <%= @event.title %> </a></p>
+<% end %>
+<a href="<%= edit_user_registration_path %>" class="btn btn-primary text-center"> Editer  </a>
+</div>

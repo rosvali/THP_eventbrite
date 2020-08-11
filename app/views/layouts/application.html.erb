@@ -20,19 +20,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<%= %>">Créer un évènement</a>
+        <a class="nav-link" href="<%= new_event_path%>">Créer un évènement</a>
       </li>
     </ul>
     <div class="btn-group dropleft">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    More
+      More
   </button>
   <div class="dropdown-menu">
     <% if !user_signed_in? %>
       <p class="dropdown-item"> <%= link_to "S'inscrire", new_user_registration_path %></p>
       <p class="dropdown-item"> <%= link_to "Se connecter", new_user_session_path %></p>
     <% else %>
-    <p class="dropdown-item"> <%= link_to "Voir profil", user_path%></p>
+    <p class="dropdown-item"> <%= link_to "Voir profil", user_path(current_user.id)%></p>
+      <p class="dropdown-item"> <%= link_to "Mettre à jour le profil", edit_user_path(current_user.id)%></p>
       <p class="dropdown-item"> <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></p>
     <% end %>
   </div>

@@ -1,4 +1,35 @@
 class UsersController < ApplicationController
-    def show
+  before_action :authenticate_user
 
+  def show
+   @user = user_finder
+   if !@user.events.empty?
+    @event = Attendance.find_by(user_id: @user.id).event
+   end
+  end
+
+  def edit
+    @user = user_finder
+  end
+
+  def update
+    @user = user_finder
+    @user.update(user_params)
+    redirect_to root_path
+  end
+
+private
+
+  def user_finder
+    User.find(params[:id])
+  end
+
+  def authenticate_user
+    if current_user != user_finder
+      redirect_to root_path
     end
+  end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :description)
+  end
+end

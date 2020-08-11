@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+   <div class="card container" style="width: 25rem;">
+      <div class="card-body">
+         <h5 class="card-title text-center"><%= @event.title %> </h5>
+         <h6 class="card-subtitle mb-2 text-muted"><%=@event.price%>$</h6>
+         <p class="card-text"><%=@event.description%></p>
+         <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= @user.email%></li>
+         <li class="list-group-item">Debut : <%= @event.start_date%></li>
+         <li class="list-group-item">Durée : <%= @event.duration%> jours</li>
+         <li class="list-group-item">Nombre de participants : <%= @event.users.length %></li>
+    </ul>
+      </div>
+   </div>
+</div>

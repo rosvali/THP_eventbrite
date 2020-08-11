@@ -3,10 +3,10 @@ class Event < ApplicationRecord
     has_many :users, through: :attendances
 
 #   validates :start_date, presence: true
-#   validates :start_date, if: :in_the_past?
+#   validate :in_the_past?
     
 #   validates :duration, presence: true
-#   validates :duration, if: :multiple_of_5?
+#   validate :multiple_of_5?
 
 #   validates :title, presence: true
 #   validates :title, length: { in: 5..140 }
