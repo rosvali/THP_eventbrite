@@ -10,6 +10,6 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
-user = User.create(email: 'themicheldu34@yopmail.com', description: 'Je suis à la retraire', first_name: 'Michel', last_name: 'Dupont')
-event = Event.create(start_date: DateTime.now, title: "Concours de belote", description: "S'amuser", price: 5)
-Attendance.create(user: user, event: event)
+# user = User.create(email: 'themicheldu34@yopmail.com', description: 'Je suis à la retraire', first_name: 'Michel', last_name: 'Dupont')
+# event = Event.create(start_date: DateTime.now, title: "Concours de belote", description: "S'amuser", price: 5)
+# Attendance.create(user: user, event: event)
