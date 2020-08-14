@@ -1,0 +1,35 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Éditer votre évènement</h1>
+</div>
+
+<p>
+  <%= form_for @event do |f| %>
+<div class="form-group">
+  <label>Titre :</label>
+  <%= f.text_field :title, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <label>Description</label>
+  <%= f.text_field :description, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <label>Prix (en centimes): </label>
+  <%= f.text_area :price, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <label>Date de début : </label>
+  <%= f.text_area :start_date, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <label>Durée (en minute) : </label>
+  <%= f.text_area :duration, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <label>Localisation : </label>
+  <%= f.text_area :location, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <button type="submit" class="btn btn-primary">Valider</button>
+</div>
+<% end %>
+</p>

@@ -2,10 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user
 
   def show
-   @user = user_finder
-   if !@user.events.empty?
-    @event = Attendance.find_by(user_id: @user.id).event
-   end
+    @user = user_finder
+    @events = Event.where(user_id: @user.id)
   end
 
   def edit
@@ -29,6 +27,7 @@ private
       redirect_to root_path
     end
   end
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :description)
   end

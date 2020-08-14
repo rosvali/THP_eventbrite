@@ -1,3 +1,7 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+<h1>Mon espace évènement</h1>
+</div>
+
 <div class="jumbotron text-center">
    <div class="card container" style="width: 25rem;">
       <div class="card-body">
@@ -5,17 +9,18 @@
          <h6 class="card-subtitle mb-2 text-muted"><%=@event.price.to_f / 100%>€</h6>
          <p class="card-text"><%=@event.description%></p>
          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Contact :<%= @user.email%></li>
             <li class="list-group-item">Debut : <%= @event.start_date%></li>
             <li class="list-group-item">Durée : <%= @event.duration%> minutes</li>
-            <li class="list-group-item">Nombre de participants : <%= @event.users.length %></li>
+            <li class="list-group-item">Les participants : </li>
          </ul>
-         <% if !already_participate?%>
-            <a href="<%=new_event_attendance_path(params[:id])%>" class="btn btn-success">Rejoindre l'évènement</a>
-         <% end %>
-         <% if admin?%>
-            <a href="<%=event_attendances_path(params[:id])%>" class="btn btn-info">Mon espace évènement</a>
-         <% end %>
-      </div>
-   </div>
+  		<% @event.users.each do |user| %>
+  		<p><%= user.first_name %> <%= user.last_name %> contact :<%= user.email %></p>
+  		<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="text-center">
+	<a href="<%=edit_event_path(params[:event_id])%>" class="btn btn-primary">Éditer</a>
+	<a href="<%=event_path(params[:event_id])%>" data-method="delete" class="btn btn-danger">Supprimer</a>
 </div>

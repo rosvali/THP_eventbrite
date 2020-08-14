@@ -7,8 +7,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(events_params)
+    @event.user_id = current_user.id
     if @event.save
-      attendance = Attendance.create(event: @event, user: current_user)
       redirect_to root_path
     else
       render 'new'
@@ -20,14 +20,34 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    @user = Attendance.find_by(event_id: @event.id).user
+    @event = finder
+    @user = User.find(@event.user_id)
+  end
+
+  def edit
+    @event = finder
+  end
+
+  def update
+    @event = finder
+    @event.update(events_params)
+    redirect_to event_attendances_path(@event.id)
+  end
+
+  def destroy
+    event = finder
+    event.delete
+    redirect_to root_path
   end
 
 private
 
 def events_params
   params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location)
+end
+
+def finder
+  Event.find(params[:id])
 end
 
 end
