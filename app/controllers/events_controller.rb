@@ -43,7 +43,7 @@ class EventsController < ApplicationController
 private
 
 def events_params
-  params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location)
+  params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location, :event_picture)
 end
 
 def finder

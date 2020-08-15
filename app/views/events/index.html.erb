@@ -5,6 +5,7 @@
  <div class="jumbotron text-center">
   <% @events.each do |event| %>
   <div class="card container" style="width: 25rem;">
+	<%= image_tag event.event_picture, alt: 'event_picture', :class => 'card-img-top' %>
     <div class="card-body">
       <h5 class="card-title text-center"> <%= event.title %> </h5>
       <a href="<%= event_path(event.id) %>" class="btn btn-primary text-center"> Voir plus </a>
