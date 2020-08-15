@@ -29,6 +29,6 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :description)
+    params.require(:user).permit(:first_name, :last_name, :description, :avatar)
   end
 end

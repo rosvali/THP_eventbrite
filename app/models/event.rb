@@ -3,6 +3,8 @@ class Event < ApplicationRecord
     has_many :users, through: :attendances
     has_one_attached :event_picture
 
+    # validates :event_picture, attached: true
+
 #   validates :start_date, presence: true
 #   validate :in_the_past?
     
