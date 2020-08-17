@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :event_validated, only: [:show]
 
   def new
     @event = Event.new
@@ -29,8 +30,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = finder
-    @event.update(events_params)
+    event = finder
+    event.update(events_params)
     redirect_to event_attendances_path(@event.id)
   end
 
@@ -46,8 +47,8 @@ def events_params
   params.require(:event).permit(:title, :start_date, :duration, :description, :price, :location, :event_picture)
 end
 
-def finder
-  Event.find(params[:id])
+def event_validated
+  redirect_to root_path if finder.validated != true
 end
 
 end

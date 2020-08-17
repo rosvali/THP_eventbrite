@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   	resources :attendances, only: [:new, :create, :index]
   end
   resources :users, only: [:show, :edit, :update]
+  namespace :admin do 
+  	root 'admin#index'
+  	resources :event_submissions, only: [:show, :index, :edit, :update]
+  end
 end

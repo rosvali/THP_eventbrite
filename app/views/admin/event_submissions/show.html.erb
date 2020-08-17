@@ -1,0 +1,22 @@
+<div class="jumbotron text-center">
+   <div class="card container" style="width: 25rem;">
+      <%if @event.event_picture.attached?%>
+         <%= image_tag @event.event_picture, alt: 'event_picture', :class => 'card-img-top' %>
+      <%end%>
+      <div class="card-body">
+         <h5 class="card-title text-center"><%= @event.title %> </h5>
+         <h6 class="card-subtitle mb-2 text-muted"><%=@event.price.to_f / 100%>€</h6>
+         <p class="card-text"><%=@event.description%></p>
+         <ul class="list-group list-group-flush">
+            <li class="list-group-item">Contact :<%= @user.email%></li>
+            <li class="list-group-item">Debut : <%= @event.start_date%></li>
+            <li class="list-group-item">Durée : <%= @event.duration%> minutes</li>
+            <li class="list-group-item">Nombre de participants : <%= @event.users.length %></li>
+         </ul>
+         <%= form_tag admin_event_submission_path(params[:id]), method: :put do %> 
+            <button href="<%= admin_event_submission_path(params[:id])%>" class="btn btn-success" name="validated" value="true">Valider</button>
+            <button href="<%= admin_event_submission_path(params[:id])%>" class="btn btn-danger" name="validated" value="false">Refuser</button>
+         <% end %>
+      </div>
+   </div>
+</div>

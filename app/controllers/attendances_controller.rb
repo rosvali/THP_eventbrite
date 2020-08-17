@@ -1,6 +1,6 @@
 class AttendancesController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin, only: [:index]
+  before_action :authenticate_creator, only: [:index]
 
 def new
   @event = event_finder
@@ -35,7 +35,7 @@ end
 
 private
 
-def authenticate_admin
+def authenticate_creator
   event = event_finder
   redirect_to root_path if event.user_id != current_user.id
 end

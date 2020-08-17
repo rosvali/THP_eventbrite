@@ -1,15 +1,21 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 <h1>Events</h1>
 </div>
-
+<div class="text-center">
+	<% if current_user.is_admin %>
+	<a class="btn btn-danger" href="<%= admin_root_path %>">Mon espace admin</a>
+	<% end %>
+</div>
  <div class="jumbotron text-center">
   <% @events.each do |event| %>
-  <div class="card container" style="width: 25rem;">
-	<%= image_tag event.event_picture, alt: 'event_picture', :class => 'card-img-top' %>
-    <div class="card-body">
-      <h5 class="card-title text-center"> <%= event.title %> </h5>
-      <a href="<%= event_path(event.id) %>" class="btn btn-primary text-center"> Voir plus </a>
+  <% if event.validated == true %>
+    <div class="card container" style="width: 25rem;">
+    <%= image_tag event.event_picture, alt: 'event_picture', :class => 'card-img-top' %>
+      <div class="card-body">
+        <h5 class="card-title text-center"> <%= event.title %> </h5>
+        <a href="<%= event_path(event.id) %>" class="btn btn-primary text-center"> Voir plus </a>
+      </div>
     </div>
-  </div>
+  <% end %>
   <% end %>
 </div>

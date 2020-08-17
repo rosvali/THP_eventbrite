@@ -1,0 +1,21 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Bienvenue <%= @admin.first_name %> <%= @admin.last_name %></h1>
+</div>
+<p class="text-center">Il y a <%= @users.length %> utilisateurs inscrits sur le site</p>
+<p class="text-center"><a class="btn btn-info" href="<%= admin_event_submissions_path %>">Voir les évènements en attente</a></p>
+<div class="jumbotron text-center">
+	<% @users.each do |user| %>
+		<div class="card container" style="width: 25rem;">
+			<div class="jumbotron text-center">
+				<%if user.avatar.attached?%>
+					<%= image_tag user.avatar, alt: 'avatar', :style => 'width: 7rem;' %>
+				<% else %>
+					<img src="" class="rounded" alt=" ">
+				<%end%>
+				<h3><%= user.first_name%> <%= user.last_name%></h3>
+				<p>Description : <%= user.description %></p>
+				<p>Email : <%= user.email %></p>
+			</div>
+		</div>
+	<% end %>
+</div>
